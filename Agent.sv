@@ -1,11 +1,11 @@
 class Agent extends uvm_agent;
 	`uvm_component_utils(Agent)
 	
-	Driver 			Driver1  	;
-	Monitor 		Monitor1 	;
-	Sequencer 		Sequencer1 	;
-	virtual intf 	Confg_intf	;
-	virtual intf 	Local_intf 	;
+	Driver			Driver1  	;
+	Monitor			Monitor1 	;
+	Sequencer		Sequencer1 	;
+	virtual intf	Confg_intf	;
+	virtual intf	Local_intf 	;
     uvm_analysis_port #(Sequence_Item) my_analysis_port;
 	
 	function new (string Name = "Agent" , uvm_component parent = null);
@@ -13,11 +13,11 @@ class Agent extends uvm_agent;
 	endfunction
 	
 	//build phase
-	function void build_phase (uvm_phase Phase) 						;
-		super.build_phase(Phase) 										;
+	function void build_phase (uvm_phase Phase)							;
+		super.build_phase(Phase)										;
 		
 		//TLM
-		my_analysis_port=new("my_analysis_port",this) 					;
+		my_analysis_port=new("my_analysis_port",this)					;
 	   
 		Driver1 		= Driver::type_id::create("Driver1",this)		;
 		Monitor1		= Monitor::type_id::create("Monitor1",this)		;
@@ -41,7 +41,7 @@ class Agent extends uvm_agent;
 		super.connect_phase(Phase)									;
 		Monitor1.my_analysis_port.connect(my_analysis_port)			;
 		Driver1.seq_item_port.connect(Sequencer1.seq_item_export)	; 
-		$display("agent_connect_phase-->done") 						;
+		$display("agent_connect_phase-->done")						;
 	endfunction
 
 	
