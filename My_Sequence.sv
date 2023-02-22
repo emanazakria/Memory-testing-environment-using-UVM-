@@ -16,7 +16,7 @@ class My_Sequence extends uvm_sequence ;
 	
 	task body;
 		start_item(Sequence_Item_In)			;
-		Sequence_Item_In.rst =  1				;
+		Sequence_Item_In.rst =  1			;
 		finish_item(Sequence_Item_In)			;
 		
 		#10ns
@@ -32,9 +32,9 @@ class My_Sequence extends uvm_sequence ;
 		// case for write
 		for(int i=0;i<32;i++) begin
 			start_item(Sequence_Item_In)			;
-			Sequence_Item_In.rst     	= 1			;
-			Sequence_Item_In.en 	   	= 1			;
-			Sequence_Item_In.wr 	   	= 1			;
+			Sequence_Item_In.rst     	= 1		;
+			Sequence_Item_In.en 	   	= 1		;
+			Sequence_Item_In.wr 	   	= 1		;
 			void'(Sequence_Item_In.randomize())		;
 			finish_item(Sequence_Item_In)			;
 			#5ns
@@ -43,9 +43,9 @@ class My_Sequence extends uvm_sequence ;
 		// case for read
 		for(int i=0;i<32;i++) begin
 			start_item(Sequence_Item_In)			;
-			Sequence_Item_In.rst     	= 1			;
-			Sequence_Item_In.en 	   	= 1			;
-			Sequence_Item_In.wr 	   	= 0			;
+			Sequence_Item_In.rst     	= 1		;
+			Sequence_Item_In.en 	   	= 1		;
+			Sequence_Item_In.wr 	   	= 0		;
 			void'(Sequence_Item_In.randomize())		;
 			finish_item(Sequence_Item_In)			;
 			#5ns
