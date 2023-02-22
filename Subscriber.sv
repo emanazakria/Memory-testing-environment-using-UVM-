@@ -20,17 +20,17 @@ class Subscriber extends uvm_subsriber #(Sequence_Item);
 	
 	
     function new(string Name = "Subscriber" , uvm_component parent=null);
-      super.new(Name,parent)	;
+      super.new(Name,parent)		;
       Addr_cov_grp 	=	new()	;
       data_cov_grp	= 	new()	;
     endfunction	
 	
 	
 	//build phase
-    function void build_phase (uvm_phase Phase);
-		super.build_phase(Phase);
-		Sequence_Item_Sub = Sequence_Item::type_id::create("Sequence_Item_Sub");
-		$display("subscriber_build_phase-->done");
+    function void build_phase (uvm_phase Phase)						;
+		super.build_phase(Phase)						;
+		Sequence_Item_Sub = Sequence_Item::type_id::create("Sequence_Item_Sub")	;
+		$display("subscriber_build_phase-->done")				;
 	endfunction
 
 	//------- write method ------//
