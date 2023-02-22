@@ -12,14 +12,14 @@ class Env extends uvm_env;
 	Subscriber 		Subscriber1	;
 	Scoreboard 		Scoreboard1	;
 	
-	virtual intf 	Confg_intf	;
-	virtual intf 	Local_intf 	;
+	virtual intf 		Confg_intf	;
+	virtual intf 		Local_intf 	;
 	
 	//build phase
-    function void build_phase (uvm_phase Phase)								;
-		super.build_phase(Phase)											;
+    function void build_phase (uvm_phase Phase)							;
+		super.build_phase(Phase)							;
 		
-		Agent1		= Agent::type_id::create("Agent1",this)					;
+		Agent1		= Agent::type_id::create("Agent1",this)				;
 		Subscriber1	= Subscriber::type_id::create("Subscriber1",this)		;
 		Scoreboard1	= scoreboard::type_id::create("Scoreboard1",this)		;
 	  
@@ -27,17 +27,17 @@ class Env extends uvm_env;
 			   `uvm_fatal(get_full_name(),"Error!")
 		end
 		
-		Local_intf = Confg_intf 											;
-		uvm_config_db #(virtual intf)::set(this,"Agent1","vif",Local_intf)	;
-		$display("env_build_phase-->done")									;
+		Local_intf = Confg_intf 							;
+		uvm_config_db #(virtual intf)::set(this,"Agent1","vif",Local_intf)		;
+		$display("env_build_phase-->done")						;
 	endfunction	
 	
 	//connect phase
-	function void connect_phase (uvm_phase 	Phase) 							;
-		super.connect_phase(Phase) 											;
-		Agent1.my_analysis_port.connect(Scoreboard1.my_analysis_export)		;
-		Agent1.my_analysis_port.connect(Subscriber1.my_analysis_export)		;
-		$display("env_connect_phase-->done")								;
+	function void connect_phase (uvm_phase 	Phase) 						;
+		super.connect_phase(Phase) 							;
+		Agent1.my_analysis_port.connect(Scoreboard1.my_analysis_export)			;
+		Agent1.my_analysis_port.connect(Subscriber1.my_analysis_export)			;
+		$display("env_connect_phase-->done")						;
 	endfunction
 
 endclass
