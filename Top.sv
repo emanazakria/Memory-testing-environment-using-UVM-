@@ -7,18 +7,18 @@ module Top;
 	
 	
 	intf	intf_in() 			;
-    memory	mem_16_32 
-    (
-      .clk(intf_in.clk)			,
-      .rst_n(intf_in.rst)		,
-      .en(intf_in.en)			,
-      .wr(intf_in.wr)			,
-      .addr(intf_in.Addr)		,
-      .data_in(intf_in.Data_In)	,
-      .data_out(intf_in.Data_Out),
-      .valid_out(intf_in.Valid_Out)
-    );
-	
+    	memory	mem_16_32 
+	    (
+	      .clk(intf_in.clk)			,
+	      .rst_n(intf_in.rst)		,
+	      .en(intf_in.en)			,
+	      .wr(intf_in.wr)			,
+	      .addr(intf_in.Addr)		,
+	      .data_in(intf_in.Data_In)		,
+	      .data_out(intf_in.Data_Out)	,
+	      .valid_out(intf_in.Valid_Out)
+	    );
+
 	initial begin 
         $dumpfile("dump.vcd")													;
         $dumpvars(0,Top)														;
