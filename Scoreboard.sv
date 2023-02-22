@@ -1,7 +1,7 @@
 class Scoreboard extends uvm_scoreboard 	;
 	
 	`uvm_component_utils(Scoreboard)
-	logic [31:0] wr_Data [0:31] ;
+	logic [31:0] wr_Data [0:31] 		;
 	logic [31:0] Addr 			;
 	
 	function new (string Name = "Scoreboard", uvm_component parent = null);
@@ -10,27 +10,27 @@ class Scoreboard extends uvm_scoreboard 	;
 	
 	//Instances
     uvm_tlm_analysis_fifo 	#(Sequence_Item) my_tlm_analysis_fifo	;
-    uvm_analysis_export 	#(Sequence_Item) my_analysis_export		; 
-    Sequence_Item	 		Sequence_Item_In 						;	
+    uvm_analysis_export 	#(Sequence_Item) my_analysis_export	; 
+    Sequence_Item	 	Sequence_Item_In 			;	
 	
 	//bulid phase
     function void build_phase (uvm_phase Phase)						;
-		super.build_phase(Phase)									;
+		super.build_phase(Phase)						;
 		my_tlm_analysis_fifo 	= new("uvm_tlm_fifo",this)			;
-		my_analysis_export		= new("my_analysis_export",this)	;
-		$display("scoreboard_build_phase-->done") 					;
-	endfunction	
+		my_analysis_export	= new("my_analysis_export",this)		;
+		$display("scoreboard_build_phase-->done") 				;
+	endfunction
 	
 	//connect phase
     function void connect_phase (uvm_phase Phase) 					;
-		super.connect_phase(Phase) 									;
-		my_analysis_export.connect(my_tlm_analysis_fifo.analysis_export);
+		super.connect_phase(Phase) 						;
+	    my_analysis_export.connect(my_tlm_analysis_fifo.analysis_export) 		;
 		$display("scoreboard_connect_phase-->done") 				;
 	endfunction	
 	
 	//run phase 
 	task run_phase (uvm_phase Phase) 		;
-		super.run_phase(Phase) 				;
+		super.run_phase(Phase) 			;
 		
 		forever begin
 			my_tlm_analysis_fifo.get(Sequence_Item_In);
