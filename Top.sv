@@ -20,11 +20,11 @@ module Top;
 	    );
 
 	initial begin 
-        $dumpfile("dump.vcd")													;
-        $dumpvars(0,Top)														;
+        $dumpfile("dump.vcd")							;
+        $dumpvars(0,Top)							;
         uvm_config_db #(virtual intf)::set(null,"uvm_test_top","vif",intf_in)	;
-        run_test("Test")														;
+        run_test("Test")							;
 	end 
 	  
-	always #5 intf_in.clk=~intf_in.clk;
+	always #5 intf_in.clk=~intf_in.clk 					;
 endmodule 
