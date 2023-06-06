@@ -1,8 +1,8 @@
-`include "Pack.sv"
+`include "Pkg.sv"
 
 module Top;
 
-	import 		Pack::*			;
+	import 		Pkg::*			;
 	import 		uvm_pkg::*		;
 	
 	
