@@ -1,6 +1,6 @@
 `include "interface.sv"
 
-package Pack;
+package Pkg;
 	import uvm_pkg::*;
 	`include "uvm_macros.svh"
 	
