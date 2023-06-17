@@ -1,4 +1,4 @@
-class Sequencer extends uvm_sequence #(Sequence_Item)				;
+class Sequencer extends uvm_sequencer #(Sequence_Item)				;
 
 	`uvm_object_utils(Sequencer)
 	
